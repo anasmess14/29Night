@@ -97,13 +97,13 @@
     <!-- Compte à rebours principal -->
     <div id="countdown"></div>
 
-    <!-- Fichier audio en autoplay -->
-    <audio autoplay loop>
-        <source src="https://ton_nom_utilisateur.github.io/soiree-du-29/audio/jul-la-faille.mp3" type="audio/mp3">
-        Ton navigateur ne supporte pas l'élément audio.
-    </audio>
-
     <script>
+        // Chargement du son avec JavaScript (Audio Object)
+        var audio = new Audio('https://ton_nom_utilisateur.github.io/soiree-du-29/audio/jul-la-faille.mp3');
+        audio.loop = true;  // La musique boucle
+        audio.autoplay = true;  // La musique démarre automatiquement
+        audio.play();  // Lance la lecture du son
+
         // Date cible (29 juin 2025 à 18h00)
         const eventDate = new Date("June 29, 2025 18:00:00").getTime();
 
