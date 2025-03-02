@@ -65,6 +65,15 @@
             opacity: 0;
         }
 
+        /* Style pour le compte à rebours */
+        #countdown {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 50px;
+            color: #ffcc00;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -84,5 +93,35 @@
     </div>
 
     <div class="message">À suivre...</div>
+
+    <!-- Compte à rebours principal -->
+    <div id="countdown"></div>
+
+    <script>
+        // Date cible (29 juin 2025 à 18h00)
+        const eventDate = new Date("June 29, 2025 18:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = eventDate - now;
+
+            if (timeLeft <= 0) {
+                document.getElementById("countdown").innerHTML = "C'est parti ! 🚀";
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Mettre à jour le compte à rebours principal
+            document.getElementById("countdown").innerHTML = 
+                `${days}j ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
 </body>
 </html>
